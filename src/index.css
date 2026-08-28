@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-sable text-brun font-body antialiased;
+    line-height: 1.6;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading font-normal;
+  }
+}
+
+@layer components {
+  /* Filet doré 1px — séparateurs discrets uniquement */
+  .rule-gold {
+    @apply border-dore/40;
+  }
+
+  /* Fade-up au scroll : combiné à useScrollFadeUp (voir src/hooks) */
+  .fade-up-init {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .fade-up-visible {
+    animation: fadeUp 500ms ease-out forwards;
+  }
+
+  .hover-zoom img {
+    transition: transform 600ms ease-out;
+  }
+
+  .hover-zoom:hover img {
+    transform: scale(1.03);
+  }
+
+  /* Slider de prix à double curseur — piste transparente, seul le pouce est cliquable */
+  .range-thumb {
+    -webkit-appearance: none;
+  }
+
+  .range-thumb::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    background: #3b332c;
+    border: 2px solid #fffdf9;
+    box-shadow: 0 1px 4px rgba(59, 51, 44, 0.3);
+    cursor: pointer;
+    margin-top: 2px;
+  }
+
+  .range-thumb::-moz-range-thumb {
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 9999px;
+    background: #3b332c;
+    border: 2px solid #fffdf9;
+    box-shadow: 0 1px 4px rgba(59, 51, 44, 0.3);
+    cursor: pointer;
+  }
+
+  .range-thumb::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+
+  .range-thumb::-moz-range-track {
+    background: transparent;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
